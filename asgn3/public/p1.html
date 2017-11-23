@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment #3 Problem 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <h2 id="testklass">Problem #1</h2>
+
+<input id="search" placeholder="Enter keyword here"></input>
+<script> // Detta skcript ska tas bort, enbart för kommentar.... Men här ska vi ha en lyssnare, varje gång vi skriver in en bokstav ska listan ändras </script>
+<br>
+
+<h3>List of Persons</h3>
+<ul id="mylist">
+
+</ul>
+
+</body>
+</html>
+
+
+<script>
+sendAjax("");
+
+function sendAjax(my_string){
+  var value = my_string;
+  $.ajax({
+    url: "http://0.0.0.0:8081/services/p1",
+    method: "GET", // Get eller Post
+    data: {data: value}, // skickar med ett objecte
+    success: function(response){
+      updatelist(response);
+    }
+
+
+  })
+
+/*  $.get("/services/p1",my_string, function(data, status){
+    //$("#testklass").html(data);
+  updatelist(data);
+  })
+
+*/
+
+  // Denna kallas på då det skrivs något i textboxen
+  // Denna skickar sedan requesten via en ajax get till p1.js, som tar hand om och skickar tillbaka en lista
+}
+function updatelist(my_string){
+  $("#mylist").empty(); // Empties the url, with all the li inside it. So we can start fresh!
+  for (i = 0; i < my_string.length; i++) {
+  $("#mylist").append("<li>"+my_string[i]+"</li>");
+
+}
+  // Denna kallas på då vi skriver i
+}
+$("#search").on('change keyup paste', function() {
+    var ny_text =$("#search").val();
+    //console.log("Vi hittar nya texten" + ny_text);
+    sendAjax(ny_text);
+
+});
+// Här bör jag lägga till kod så att den uppdaterar listan det första den gör när vi kallar på html
+
+</script>
+
+
+
+
+ // Write your script here. Using jQuery is optional even though it is
+ // highly recommended.

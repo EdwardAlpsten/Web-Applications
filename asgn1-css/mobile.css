@@ -1,0 +1,48 @@
+
+
+.one {
+  border-style: solid;
+  border-width: 5px;
+  border-color: blue;
+
+
+}
+.titel{
+  width:100%;
+  font-size: 200%;
+
+
+}
+.container{
+  display: flex;
+  flex-direction: column-reverse;
+
+}
+.text{
+  flex:inline-block;
+  max-height: 270px;
+  background-color: lightblue;
+  overflow: scroll;
+}
+
+.bild{
+  flex:inline-block;
+  margin: 10px;
+
+
+}
+.knapp{
+  width: 100%;
+  margin: 3px;
+
+}
+.container2{
+  /*display:flex;
+  flex-direction: column;*/
+  /*justify-content: center;*/
+
+}
+.bildproperties{
+  width: 100%;
+
+}

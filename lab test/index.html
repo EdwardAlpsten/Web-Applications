@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <div id="rubrik"> Detta är min div fil </div>
+
+    <div>
+      <input id="input1"> </input>
+
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    $("#input1").keyup(function(event){
+  			if(event.keyCode == 13){
+          var string = $(this).val();
+          alert(string);
+          skicka_get(string);
+
+        }
+      });
+
+      function skicka_get(string){
+        $.ajax({
+          data: {data:string},
+          url: "/skicka_get",
+          type: "GET",
+          sucess: function(result) {
+            console.log(result);
+          }
+        });
+      }
+
+      // Klickar vi på rubriken skickar vi ett post
+      $("#rubrik").on("click", function(event){
+        $.ajax({
+          data: {data:"blää"},
+          url: "/skicka_post",
+          type: "POST",
+          sucess: function(result) {
+            console.log(data);
+          }
+        });
+      });
+
+
+
+    </script>
+
+
+  </body>
+</html>
